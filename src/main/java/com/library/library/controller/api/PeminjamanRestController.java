@@ -54,14 +54,14 @@ public class PeminjamanRestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseData);
         }
 
-        Buku buku = bukuService.findOne(peminjamanDto.getBuku());
+        Buku buku = bukuService.findOne(peminjamanDto.getBuku().getId());
         if (buku == null) {
             responseData.setStatus(false);
             responseData.getMessages().add("Buku tidak ditemukan");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseData);
         }
 
-        User user = userService.findOne(peminjamanDto.getUser());
+        User user = userService.findOne(peminjamanDto.getUser().getId());
         if (user == null) {
             responseData.setStatus(false);
             responseData.getMessages().add("User tidak ditemukan");
@@ -106,14 +106,14 @@ public class PeminjamanRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
         }
 
-        Buku buku = bukuService.findOne(peminjamanDto.getBuku());
+        Buku buku = bukuService.findOne(peminjamanDto.getBuku().getId());
         if (buku == null) {
             responseData.setStatus(false);
             responseData.getMessages().add("Buku tidak ditemukan");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseData);
         }
 
-        User user = userService.findOne(peminjamanDto.getUser());
+        User user = userService.findOne(peminjamanDto.getUser().getId());
         if (user == null) {
             responseData.setStatus(false);
             responseData.getMessages().add("User tidak ditemukan");

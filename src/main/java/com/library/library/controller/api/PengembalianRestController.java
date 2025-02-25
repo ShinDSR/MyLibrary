@@ -49,7 +49,7 @@ public class PengembalianRestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseData);
         }
 
-        Peminjaman peminjaman = peminjamanService.findOne(pengembalianDto.getPeminjaman());
+        Peminjaman peminjaman = peminjamanService.findOne(pengembalianDto.getPeminjaman().getId());
         if (peminjaman == null) {
             responseData.setStatus(false);
             responseData.getMessages().add("Peminjaman tidak ditemukan");
@@ -88,7 +88,7 @@ public class PengembalianRestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseData);
         }
 
-        Peminjaman peminjaman = peminjamanService.findOne(pengembalianDto.getPeminjaman());
+        Peminjaman peminjaman = peminjamanService.findOne(pengembalianDto.getPeminjaman().getId());
         if (peminjaman == null) {
             responseData.setStatus(false);
             responseData.getMessages().add("Peminjaman tidak ditemukan");

@@ -4,15 +4,18 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.library.library.models.entities.Buku;
+import com.library.library.models.entities.User;
+
 import jakarta.validation.constraints.NotNull;
 
 public class PeminjamanDto {
 
     @NotNull(message = "Buku is required")
-    private long buku;
+    private Buku buku;
 
     @NotNull(message = "User is required")
-    private long user;
+    private User user;
 
     @NotNull(message = "Tanggal Pinjam is required")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -22,19 +25,18 @@ public class PeminjamanDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tanggalKembali;
 
-    @NotNull(message = "Kembali is required")
     private boolean isKembali;
 
-    public long getBuku() {
+    public Buku getBuku() {
         return buku;
     }
-    public void setBuku(long buku) {
+    public void setBuku(Buku buku) {
         this.buku = buku;
     }
-    public long getUser() {
+    public User getUser() {
         return user;
     }
-    public void setUser(long user) {
+    public void setUser(User user) {
         this.user = user;
     }
     public Date getTanggalPinjam() {

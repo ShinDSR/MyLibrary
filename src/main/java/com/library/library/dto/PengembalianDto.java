@@ -4,12 +4,14 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.library.library.models.entities.Peminjaman;
+
 import jakarta.validation.constraints.NotNull;
 
 public class PengembalianDto {
 
     @NotNull(message = "Peminjaman is required")
-    private long peminjaman;
+    private Peminjaman peminjaman;
 
     @NotNull(message = "Tanggal Dikembalikan is required")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -17,11 +19,11 @@ public class PengembalianDto {
     
     private Double denda;
 
-    public long getPeminjaman() {
+    public Peminjaman getPeminjaman() {
         return peminjaman;
     }
 
-    public void setPeminjaman(long peminjaman) {
+    public void setPeminjaman(Peminjaman peminjaman) {
         this.peminjaman = peminjaman;
     }
 
