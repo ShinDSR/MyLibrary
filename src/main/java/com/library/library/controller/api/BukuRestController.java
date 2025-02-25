@@ -49,7 +49,7 @@ public class BukuRestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseData);
         }
 
-        Kategori kategori = kategoriService.findOne(bukuDto.getKategori());
+        Kategori kategori = kategoriService.findOne(bukuDto.getKategori().getId());
         if (kategori == null) {
             responseData.setStatus(false);
             responseData.getMessages().add("Kategori tidak ditemukan");
@@ -93,7 +93,7 @@ public class BukuRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseData);
         }
 
-        Kategori kategori = kategoriService.findOne(bukuDto.getKategori());
+        Kategori kategori = kategoriService.findOne(bukuDto.getKategori().getId());
         if (kategori == null) {
             responseData.setStatus(false);
             responseData.getMessages().add("Kategori tidak ditemukan");

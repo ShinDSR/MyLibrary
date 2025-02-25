@@ -1,5 +1,7 @@
 package com.library.library.dto;
 
+import com.library.library.models.entities.Kategori;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -21,7 +23,7 @@ public class BukuDto {
     private Integer stok;
 
     @NotNull(message = "Kategori tidak boleh kosong")
-    private Long kategori;
+    private Kategori kategori;
 
     public String getJudul() {
         return judul;
@@ -53,10 +55,10 @@ public class BukuDto {
     public void setStok(Integer stok) {
         this.stok = stok;
     }
-    public Long getKategori() {
+    public Kategori getKategori() {
         return kategori;
     }
-    public void setKategori(Long kategori) {
+    public void setKategori(Kategori kategori) {
         this.kategori = kategori;
     }
     

@@ -61,7 +61,7 @@ public class KategoriViewController {
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditForm(@PathVariable("id") long id, Model model, RedirectAttributes redirectAttributes) {
+    public String edit(@PathVariable("id") long id, Model model, RedirectAttributes redirectAttributes) {
         Kategori kategori = kategoriService.findOne(id);
         if (kategori == null) {
             redirectAttributes.addFlashAttribute("status", "Error");
