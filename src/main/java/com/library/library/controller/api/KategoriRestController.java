@@ -2,6 +2,8 @@ package com.library.library.controller.api;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.library.library.dto.KategoriDto;
 import com.library.library.dto.ResponseData;
+import com.library.library.dto.SearchData;
 import com.library.library.models.entities.Kategori;
 import com.library.library.services.KategoriService;
 
@@ -89,5 +92,11 @@ public class KategoriRestController {
     @DeleteMapping("/{id}")
     public void removeOne(@PathVariable("id") Long id) {
         kategoriService.removeOne(id);
+    }
+
+    @PostMapping("/search/{size}/{page}")
+    public Iterable<Kategori> findByName(@RequestBody SearchData searchData, @PathVariable("size") int size, @PathVariable("page") int page) {
+        Pageable pageable = PageRequest.of(page, size);
+        return kategoriService.findByName(searchData.getKeyword(), pageable);
     }
 }

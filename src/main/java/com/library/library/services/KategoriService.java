@@ -3,6 +3,7 @@ package com.library.library.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.library.library.models.entities.Kategori;
@@ -35,5 +36,9 @@ public class KategoriService {
 
     public void removeOne(long id) {
         kategoriRepo.deleteById(id);
+    }
+
+    public Iterable<Kategori> findByName(String nama, Pageable pageable) {
+        return kategoriRepo.findByNamaContains(nama, pageable);
     }
 }

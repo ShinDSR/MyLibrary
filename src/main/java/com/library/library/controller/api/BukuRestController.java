@@ -1,5 +1,7 @@
 package com.library.library.controller.api;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.library.library.dto.BukuDto;
 import com.library.library.dto.ResponseData;
+import com.library.library.dto.SearchData;
 import com.library.library.models.entities.Buku;
 import com.library.library.models.entities.Kategori;
 import com.library.library.services.BukuService;
@@ -112,5 +115,34 @@ public class BukuRestController {
     public void removeOne(@PathVariable("id") Long id) {
         bukuService.removeOne(id);
     }
+
+    // @PostMapping("/search/bykategori")
+    // public List<Buku> findByKategoriContains(String kategori) {
+    //     return bukuService.findByKategoriContains(kategori);
+    // }
+
+    @PostMapping("/search/byjudul")
+    public List<Buku> findByJudul(@RequestBody SearchData searchData) {
+        return bukuService.findByJudul(searchData.getKeyword());
+    }
+
+    @PostMapping("/search/bypenerbit")
+    public List<Buku> findByPenerbit(@RequestBody SearchData searchData) {
+        return bukuService.findByPenerbit(searchData.getKeyword());
+    }
+
+    @PostMapping("/search/bypengarang")
+    public List<Buku> findByPengarang(@RequestBody SearchData searchData) {
+        return bukuService.findByPengarang(searchData.getKeyword());
+    }
+
+    // @PostMapping("/search/bytahunterbit")
+    // public List<Buku> findByTahunTerbit(int tahunTerbit) {
+    //     return bukuService.findByTahunTerbit(tahunTerbit);
+    // }
     
+    @PostMapping("/search/bykategori")
+    public List<Buku> findByKategori(@RequestBody SearchData searchData) {
+        return bukuService.findByKategori(searchData.getKeyword());
+    }
 }
